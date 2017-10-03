@@ -1,0 +1,23 @@
+create database sql_injection;
+CREATE USER sql_injection@localhost IDENTIFIED BY 'sql_injection';
+GRANT ALL ON sql_injection.* TO 'sql_injection'@'localhost';
+FLUSH PRIVILEGES;
+
+use sql_injection;
+
+create table user (
+ uid serial primary key,
+ login_id text,
+ password text,
+ mail text,
+ unique(login_id(100))
+);
+insert into user(login_id, password, mail) values('harupu', 'sq1Injecti0n', 'harupu@example.com');
+
+create table item (
+  id serial primary key,
+  name text,
+  cost integer,
+  unique(name(100))
+);
+insert into item(name, cost) values('actinolite', 100), ('elbaite',20),('realgar',30),('jadeite',403),('hackmanite',501),('sapphire',60),('quartz',70),('galena',80),('cacoxenite',90),('wavelite',140),('iolite',11),('feldspar',54),('talc',1999),('kyanite',54),('barite',978),('danburite',375),('ulexite',201),('vanadinite',420),('nephelite',230),('obsidian',445),('zeolite',9999),('labradorite',2),('papagoite',1),('magnetite',45);
